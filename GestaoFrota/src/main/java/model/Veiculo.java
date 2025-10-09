@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-
+import model.enums.CategoriaVeiculo;
 import model.enums.StatusVeiculo;
 
 public class Veiculo {
@@ -17,8 +17,15 @@ public class Veiculo {
 	private StatusVeiculo status;
 	private LocalDate dataUltimaRevisao;
 	private double kmUltimaRevisao;
+	private CategoriaVeiculo categoria;
 	
 	
+	public CategoriaVeiculo getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(CategoriaVeiculo categoria) {
+		this.categoria = categoria;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -87,20 +94,41 @@ public class Veiculo {
 	public void atualizarKm(double km) {
 		if(km > 0) {
 			kmAtual += km;
+			System.out.println("Rodagem atualizada para: "+kmAtual+" Km");
 		}
 	}
 	
 	public double custoPorKm(double precoCombustivel) {
 		if(consumoMedio <= 0) return 0;
-		return precoCombustivel/consumoMedio;
+		double custo = precoCombustivel/consumoMedio;
+		System.out.println("Custo médio por km é: R$"+custo);
+		return custo;
 		
 	}
 	
 	public boolean necessitaManutencao(int intervaloKm, int intervaloMeses) {
+		if(dataUltimaRevisao == null) return true;
+		
 	    long meses = ChronoUnit.MONTHS.between(dataUltimaRevisao, LocalDate.now());
 	    boolean porKm = (kmAtual - kmUltimaRevisao) >= intervaloKm;
 	    boolean porTempo = meses >= intervaloMeses;
 	    return porKm || porTempo;
 	}
+	
+    public void marcarAtivo() {
+        if (this.status == StatusVeiculo.MANUTENCAO) {
+            System.out.println("Não é possível ativar o veículo. Ele ainda está em manutenção.");
+            return;
+        }
+        this.status = StatusVeiculo.ATIVO;
+        this.kmUltimaRevisao = this.kmAtual;
+        this.dataUltimaRevisao = LocalDate.now();
+        System.out.println("Veículo marcado como ATIVO e revisão registrada.");
+    }
+    
+    public void marcarEmManutencao() {
+        this.status = StatusVeiculo.MANUTENCAO;
+        System.out.println("Veículo marcado como em MANUTENÇÃO. Indisponível para uso.");
+    }
 
 }
