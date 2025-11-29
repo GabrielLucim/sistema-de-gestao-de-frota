@@ -10,9 +10,9 @@ public class ConsumoService {
     private final ConsumoCombustivelDAO consumoDAO;
     private final VeiculoDAO veiculoDAO;
 
-    public ConsumoService(ConsumoCombustivelDAO consumoDAO, VeiculoDAO veiculoDAO) {
-        this.consumoDAO = consumoDAO;
-        this.veiculoDAO = veiculoDAO;
+    public ConsumoService() {
+        this.consumoDAO = new ConsumoCombustivelDAO();
+        this.veiculoDAO = new VeiculoDAO();
     }
 
 

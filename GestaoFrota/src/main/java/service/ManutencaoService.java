@@ -16,9 +16,9 @@ public class ManutencaoService {
     private final ManutencaoDAO manutencaoDAO;
     private final VeiculoDAO veiculoDAO;
 
-    public ManutencaoService(ManutencaoDAO manutencaoDAO, VeiculoDAO veiculoDAO) {
-        this.manutencaoDAO = manutencaoDAO;
-        this.veiculoDAO = veiculoDAO;
+    public ManutencaoService() {
+        this.manutencaoDAO = new ManutencaoDAO();
+        this.veiculoDAO = new VeiculoDAO();
     }
 
 

@@ -10,8 +10,8 @@ public class MotoristaService {
 
     private final MotoristaDAO motoristaDAO;
 
-    public MotoristaService(MotoristaDAO motoristaDAO) {
-        this.motoristaDAO = motoristaDAO;
+    public MotoristaService() {
+        this.motoristaDAO = new MotoristaDAO();
     }
 
 

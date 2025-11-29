@@ -13,8 +13,8 @@ public class VeiculoService {
 
     private final VeiculoDAO veiculoDAO;
 
-    public VeiculoService(VeiculoDAO veiculoDAO) {
-        this.veiculoDAO = veiculoDAO;
+    public VeiculoService() {
+        this.veiculoDAO = new VeiculoDAO();
     }
 
 

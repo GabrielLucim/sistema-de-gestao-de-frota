@@ -2,10 +2,20 @@ package model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import model.enums.CategoriaCNH;
 
+@Entity
+@Table(name = "Motoristas")
 public class Motorista {
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String cnh;

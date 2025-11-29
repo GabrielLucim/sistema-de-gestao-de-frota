@@ -18,10 +18,10 @@ public class EntregaService {
     private final VeiculoDAO veiculoDAO;
     private final MotoristaDAO motoristaDAO;
 
-    public EntregaService(EntregaDAO entregaDAO, VeiculoDAO veiculoDAO, MotoristaDAO motoristaDAO) {
-        this.entregaDAO = entregaDAO;
-        this.veiculoDAO = veiculoDAO;
-        this.motoristaDAO = motoristaDAO;
+    public EntregaService() {
+        this.entregaDAO = new EntregaDAO();
+        this.veiculoDAO = new VeiculoDAO();
+        this.motoristaDAO = new MotoristaDAO();
     }
 
 

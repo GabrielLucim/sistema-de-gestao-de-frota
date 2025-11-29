@@ -2,12 +2,26 @@ package model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import model.enums.StatusManutencao;
 import model.enums.StatusVeiculo;
 import model.enums.TipoManutencao;
 
+@Entity
+@Table(name = "Manutenção")
 public class Manutencao {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	@ManyToOne 
+    @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
     private TipoManutencao tipo;
     private LocalDate dataAgendada;
